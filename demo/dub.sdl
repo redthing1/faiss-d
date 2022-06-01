@@ -6,5 +6,4 @@ license "proprietary"
 
 dependency "faiss-d" path=".."
 
-dflags "-shared"
-lflags "-fopenmp"
+lflags "-fopenmp" "-shared"
