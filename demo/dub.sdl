@@ -1,0 +1,7 @@
+name "demo"
+description "faiss-d demo"
+authors "no"
+copyright "Copyright © 2022, no"
+license "proprietary"
+
+dependency "faiss-d" path=".."
