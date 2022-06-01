@@ -39,7 +39,15 @@ if [ ! -f $LIB_FILE_1 ] || [ "$1" == "-f" ]; then
     #
     # build the library
     # cmake -B build . -DFAISS_ENABLE_GPU=OFF -DFAISS_ENABLE_PYTHON=OFF -DFAISS_ENABLE_C_API=ON -DBUILD_TESTING=OFF -DBLA_VENDOR=Intel10_64_dyn -DMKL_LIBRARIES=/opt/intel/mkl -DFAISS_OPT_LEVEL=avx2 -DBUILD_SHARED_LIBS=OFF
-    cmake -B build . -DFAISS_ENABLE_GPU=OFF -DFAISS_ENABLE_PYTHON=OFF -DFAISS_ENABLE_C_API=ON -DBUILD_TESTING=OFF -DFAISS_OPT_LEVEL=avx2 -DBUILD_SHARED_LIBS=OFF
+    cmake -B build .\
+        -DCMAKE_BUILD_TYPE=Release \
+        -DFAISS_OPT_LEVEL=avx2 \
+        -DFAISS_ENABLE_GPU=OFF \
+        -DFAISS_ENABLE_PYTHON=OFF \
+        -DFAISS_ENABLE_C_API=ON \
+        -DBUILD_TESTING=OFF \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+        -DBUILD_SHARED_LIBS=OFF
     cd build
     make -j$(nproc)
     #
