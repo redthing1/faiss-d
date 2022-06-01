@@ -11,12 +11,13 @@ HOST="faiss-d"
 LIB_NAME="faiss"
 SOURCETREE_URL="https://github.com/facebookresearch/faiss"
 SOURCETREE_DIR="faiss_source"
-LIB_FILE="libfaiss_c.a"
+LIB_FILE_1="libfaiss_c.a"
+LIB_FILE_2="libfaiss.a"
 
 PACKAGE_DIR=$(dirname "$0")
 cd "$PACKAGE_DIR"
 pushd .
-if [ ! -f $LIB_FILE ] || [ "$1" == "-f" ]; then
+if [ ! -f $LIB_FILE_1 ] || [ "$1" == "-f" ]; then
     echo "[$HOST] building $LIB_NAME library..."
 
     # delete $SOURCETREE_DIR to force re-fetch source
@@ -47,10 +48,11 @@ if [ ! -f $LIB_FILE ] || [ "$1" == "-f" ]; then
 
     echo "[$HOST] finished build of $LIB_NAME" 
 
-    echo "[$HOST] copying $LIB_NAME binary ($LIB_FILE)" 
-    cp -v $(pwd)/c_api/$LIB_FILE $PACKAGE_DIR/$LIB_FILE
+    echo "[$HOST] copying $LIB_NAME binaries ($LIB_FILE_1), ($LIB_FILE_2) to $PACKAGE_DIR"
+    cp -v $(pwd)/c_api/$LIB_FILE_1 $PACKAGE_DIR/$LIB_FILE_1
+    cp -v $(pwd)/faiss/$LIB_FILE_2 $PACKAGE_DIR/$LIB_FILE_2
     popd
 else
-    # delete $LIB_FILE to force rebuild
+    # delete $LIB_FILE_1 to force rebuild
     echo "[$HOST] library $LIB_NAME already built."
 fi
