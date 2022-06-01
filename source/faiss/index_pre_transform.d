@@ -1,5 +1,9 @@
 module faiss.index_pre_transform;
 
+import faiss.common;
+import faiss.index;
+import faiss.vector_transform;
+
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *

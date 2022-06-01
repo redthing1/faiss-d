@@ -1,5 +1,7 @@
 module faiss.index;
 
+import faiss.common;
+
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
