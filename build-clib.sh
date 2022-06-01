@@ -11,8 +11,8 @@ HOST="faiss-d"
 LIB_NAME="faiss"
 SOURCETREE_URL="https://github.com/facebookresearch/faiss"
 SOURCETREE_DIR="faiss_source"
-LIB_FILE_1="libfaiss_c.a"
-LIB_FILE_2="libfaiss.a"
+LIB_FILE_1="libfaiss_c.so"
+LIB_FILE_2="libfaiss.so"
 
 PACKAGE_DIR=$(dirname "$0")
 cd "$PACKAGE_DIR"
@@ -47,7 +47,7 @@ if [ ! -f $LIB_FILE_1 ] || [ "$1" == "-f" ]; then
         -DFAISS_ENABLE_C_API=ON \
         -DBUILD_TESTING=OFF \
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-        -DBUILD_SHARED_LIBS=OFF
+        -DBUILD_SHARED_LIBS=ON
     cd build
     make -j$(nproc)
     #

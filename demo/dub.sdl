@@ -5,5 +5,3 @@ copyright "Copyright © 2022, no"
 license "proprietary"
 
 dependency "faiss-d" path=".."
-
-lflags "-fopenmp" "-shared"
