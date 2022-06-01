@@ -37,8 +37,8 @@ if [ ! -f $LIB_FILE ] || [ "$1" == "-f" ]; then
     # START BUILD
     #
     # build the library
-    cd c_api/
-    cmake -B build . -DCMAKE_BUILD_TYPE=Release
+    # cmake -B build . -DFAISS_ENABLE_GPU=OFF -DFAISS_ENABLE_PYTHON=OFF -DFAISS_ENABLE_C_API=ON -DBUILD_TESTING=OFF -DBLA_VENDOR=Intel10_64_dyn -DMKL_LIBRARIES=/opt/intel/mkl -DFAISS_OPT_LEVEL=avx2 -DBUILD_SHARED_LIBS=OFF
+    cmake -B build . -DFAISS_ENABLE_GPU=OFF -DFAISS_ENABLE_PYTHON=OFF -DFAISS_ENABLE_C_API=ON -DBUILD_TESTING=OFF -DFAISS_OPT_LEVEL=avx2 -DBUILD_SHARED_LIBS=OFF
     cd build
     make -j$(nproc)
     #
@@ -48,7 +48,7 @@ if [ ! -f $LIB_FILE ] || [ "$1" == "-f" ]; then
     echo "[$HOST] finished build of $LIB_NAME" 
 
     echo "[$HOST] copying $LIB_NAME binary ($LIB_FILE)" 
-    cp -v $(pwd)/$LIB_FILE $PACKAGE_DIR/$LIB_FILE
+    cp -v $(pwd)/c_api/$LIB_FILE $PACKAGE_DIR/$LIB_FILE
     popd
 else
     # delete $LIB_FILE to force rebuild
