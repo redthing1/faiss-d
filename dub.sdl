@@ -9,4 +9,6 @@ configuration "default" {
     # on posix platforms, link to faiss static library
     lflags "-L$PACKAGE_DIR" "$PACKAGE_DIR/libfaiss_c.a" "$PACKAGE_DIR/libfaiss.a" platform="posix"
     preGenerateCommands "bash $PACKAGE_DIR/build-clib.sh" platform="posix"
+
+    lflags "-lstdc++" "-lgomp" "-lpthread" "-lblas" "-llapack"
 }
