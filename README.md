@@ -1,8 +1,17 @@
 # faiss-d
 
-[FAISS](https://github.com/facebookresearch/faiss) for D
+[FAISS](https://github.com/facebookresearch/faiss) bindings for D
+
+currently binds to FAISS v1.7.2
 
 ## usage
+
+simply add `faiss-d` as a dependency
+
+if on unix, add this to make sure that the shared libs are found at runtime
+```sh
+lflags "-L./." "-rpath=./."
+```
 
 ## notes
 
