@@ -5,4 +5,7 @@ copyright "Copyright © 2022, no"
 license "proprietary"
 
 dependency "faiss-d" path=".."
-lflags "-L./." "-rpath=./."
+
+configuration "default" {
+    lflags "-L./." "-rpath=./."
+}
